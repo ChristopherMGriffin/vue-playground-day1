@@ -10,7 +10,7 @@
             screen.
           </p>
           <!-- add code to element below -->
-          <div class="player-card text-center">
+          <div class="player-card text-center" v-show="state.showPlayer">
             <div>
               <img :src="state.player.photo" />
             </div>
@@ -67,23 +67,23 @@
             to add another condition.
           </p>
           <!-- v-if comparing grade and 90 -->
-          <div>
+          <div v-show="state.grade > 89">
             <p>The grade is 'A'.</p>
           </div>
           <!-- v-else-if comparing grade and 80 -->
-          <div>
+          <div v-show="state.grade > 79 && state.grade < 90">
             <p>The grade is 'B'.</p>
           </div>
           <!-- v-else-if comparing grade and 70 -->
-          <div>
+          <div v-show="state.grade > 69 && state.grade < 80">
             <p>The grade is 'C'.</p>
           </div>
           <!-- v-else-if comparing grade and 60 -->
-          <div>
+          <div v-show="state.grade > 59 && state.grade < 70">
             <p>The grade is 'D'.</p>
           </div>
           <!-- v-else to display if all the others fail -->
-          <div>
+          <div v-show="state.grade < 60">
             <p>The grade is 'F'.</p>
           </div>
         </div>
@@ -128,6 +128,8 @@ export default {
   name: "condtional-rendering-exercise",
   setup() {
     const state = reactive({
+      showPlayer: true,
+      grade: 99,
       //add a property to toggle the player-card here.
       //add a property to set the number value here.
       player: {
